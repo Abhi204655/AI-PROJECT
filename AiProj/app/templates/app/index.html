@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}
+Home
+{% endblock title %}
+
+{% block main %}
+<section id="index">
+    <div class="main-block">
+        <div class="content">
+            <h1>Don't take TENSION<br>
+                We are here to HELP you.</h1>
+            {% if user.is_authenticated %}
+                <a href="{% url 'app:profile' %}">Go to profile.</a>
+            {% else %}
+                <a href="{% url 'account:register' %}">Join Us.</a>
+            {% endif %}
+        </div>
+        <div class="box">
+        </div>
+    </div>
+</section>
+{% endblock main %}

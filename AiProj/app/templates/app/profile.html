@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+{{user.username}} - profile
+{% endblock title %}
+
+{% block main %}
+<section>
+    <div class="profile">
+        <div class="profile-pic">
+        {% if profile.image.url %}
+            <img src="{{profile.image.url}}">
+        {% else %}
+            <img src="{% static 'img/logo.png' %}">
+        {% endif %}
+        {% if updated %}
+            <h1>{{profile.firstName}} {{profile.lastName}}</h1>
+        {% else %}
+            <h1>{{user.username}}</h1>
+        {% endif %}
+        </div>
+        {% if updated %}
+        <div class="profile-data-wrepper">
+            <div class="profile-data">
+                <p>D.O.B : {{profile.dob}}</p>
+                <p>{{profile.address}}</p>
+                <p>{{profile.city}} - {{profile.pin}}</p>
+                <p>{{profile.state}} - {{profile.country}}</p>
+            </div>
+            <div class="loan-recomand">
+                <h2>Loan Recommandations</h2>
+                <p>We don't have any recommandation for you...</p>
+            </div>
+            <div class="loan-status">
+                <h2>Loan Status</h2>
+                <p>You haven't applied for any loan..</p>
+            </div>
+        </div>
+        {% else %}
+        <a href="{% url "app:update" %}" id="updatelink">Update your profile first</a>
+        {% endif %}
+    </div>
+</section>
+{% endblock main %}

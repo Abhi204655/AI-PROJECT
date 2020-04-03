@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Login
+{% endblock title %}
+
+{% block main %}
+{% comment %} <form class="form-signin" method="post">{% csrf_token %}
+
+  <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+
+  <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+
+  <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+
+  {% for field in login_form %}
+  <p>
+    {% for error in field.errors %}
+    <p style="color: red">{{ error }}</p>
+    {% endfor %}
+  </p>
+  {% endfor %}
+  {% if login_form.non_field_errors %}
+  <div style="color: red">
+    <p>{{login_form.non_field_errors}}</p>
+  </div>
+
+  {% endif %}
+
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
+
+</form> {% endcomment %}
+
+
+
+<section>
+  <div class="login-wrepper">
+    <div class="login-box">
+      <div class="login">
+        <form method="post">
+          {% csrf_token %}
+          <h1>Login</h1>
+          <input type="text" name="email" class="inp inp1" placeholder="Enter email..." required>
+          <input type="password" name="password" class="inp inp2" placeholder="Enter password.." required>
+          <button type="submit" id="submit">Login</button>
+          {% for field in login_form %}
+            <p>
+              {% for error in field.errors %}
+              <p style="color: red">{{ error }}</p>
+              {% endfor %}
+            </p>
+          {% endfor %}
+          {% if login_form.non_field_errors %}
+            <div style="color: red">
+              <p>{{login_form.non_field_errors}}</p>
+            </div>
+          {% endif %}
+          <a href="#">Forget password?</a>
+          <a href="{% url 'account:register' %}">Don't have account. Create One.</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock main %}

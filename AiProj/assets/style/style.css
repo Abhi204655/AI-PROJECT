@@ -1,0 +1,484 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+/* home page css  */
+html{
+    width: 100%;
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: url("../img/bg2.png") no-repeat;
+    background-size: cover;
+    background-position: top center;
+    background-color: #1c89db;
+}
+body{
+    width: 100%;
+    height: 100%;
+    background: url("../img/bg2.png") no-repeat;
+    background-size: cover;
+    background-position: top center;
+}
+nav{
+    width: 100%;
+    height: 10vh;
+}
+nav .nav-bar{
+    width: 85%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    animation: animate 0.3s forwards;
+}
+@keyframes animate{
+    from{
+        transform: translateY(-100px);
+    }
+    to{
+        transform: translateY(0px);
+    }
+}
+.nav-bar .logo{
+    color: white;
+    font-weight: bold;
+    font-size: 1.4em;
+}
+.logo a{
+    text-decoration: none;
+    color: white;
+}
+.nav-bar .nav-items a{
+    text-decoration: none;
+    color: white;
+    margin-left: 2em;
+}
+.nav-items #login{
+    position: relative;
+}
+.nav-items #login::before{
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    width: 0px;
+    height: 3px;
+    background: #0091dc;
+    transition: 0.4s;;
+}
+.nav-items #login:hover::before{
+    transition: 0.4s;
+    width: 100%;
+}
+.logo a{
+    color: white;
+    text-decoration: none;
+}
+.logo a:hover{
+    color: white;
+    text-decoration: none;
+}
+#block{
+    background: red;
+    padding: 0.3em 1.3em;
+    border-radius: 30px;
+    font-weight: bold;
+    background: linear-gradient(45deg,#008ECB,#08CEC8);
+}
+#block:hover{
+    background: linear-gradient(45deg,#08CEC8,#008ECB);
+}
+section{
+    width: 100%;
+    height: 90vh;
+}
+section .main-block{
+    width: 85%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.box{
+    min-width: 320px;
+    width: 200px;
+    height: 340px;
+    background: linear-gradient(45deg,#008ECB,#08CEC8);
+    border-radius: 10px;
+    box-shadow: 5px 5px 40px #009de3,
+                -5px -5px 40px #0091dc;
+    position: relative;
+    animation: animateBox 0.6s forwards;
+    transition: 0.5s ease-in-out;
+}
+.box::before{
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: -20%;
+    width: 60%;
+    height:60%;
+    box-shadow: 5px 5px 40px #009de3,
+                -5px -5px 40px #0091dc;
+    border-radius: 10px;
+    background-color: #0091dc;
+    transition: 1s ease-in-out;
+}
+.box::after{
+    content: '';
+    position: absolute;
+    bottom: -20%;
+    right: -20%;
+    width: 60%;
+    height: 60%;
+    box-shadow: 5px 5px 40px #009de3,
+                -5px -5px 40px #0091dc;
+    border-radius: 10px;
+    background-color: #009de3;
+    transition: 1s ease-in-out;
+}
+.box:hover::before,.box:hover::after{
+    transition: 1s ease-in-out;
+    transform: scale(.7);
+}
+@keyframes animateBox{
+    from{
+        transform: scale(0);
+    }
+    to{
+        transform: scale(1);
+    }
+}
+.content h1{
+    text-align: left;
+    font-weight: bold;
+    color: white;
+    font-size: 2.4em;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.4);
+    letter-spacing: 2px;
+    word-spacing: 6px;
+    margin-bottom: 0.5em;
+    animation: animate2 0.4s forwards;
+}
+.content a{
+    text-decoration: none;
+    margin: 1em 0;
+    background: linear-gradient(45deg,#008ECB,#08CEC8);
+    padding: 0.4em 2.3em;
+    color: white;
+    font-weight: bold;
+    border-radius: 25px;
+    transition: 0.5s;
+    animation: animate2 0.4s forwards;
+}
+.content a{
+    color: white;
+    text-decoration: none;
+}
+.content a:hover{
+    color: white;
+    text-decoration: none;
+}
+@keyframes animate2{
+    from{
+        transform: translateX(-200px);
+        opacity: 0;
+    }
+    to{
+        transform: translate(0px);
+        opacity: 1;
+    }
+}
+.content a:hover{
+    transition: 0.5s;
+    background: linear-gradient(45deg,#08CEC8,#008ECB);
+}
+@media(max-width:1024px){
+    .box{
+        display: none;
+    }
+}
+
+/* login page css */
+.login-wrepper{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+.login-box{
+    width: 600px;
+    height: 80%;
+    background: url("../img/bg.png") linear-gradient(45deg,#08CEC8,#008ECB);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 20px;
+    box-shadow: 5px 5px 40px #009de3,
+                -5px -5px 40px #0091dc;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 2em;
+}
+.login form{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    height: 500px;
+    padding: 2em;
+}
+.login form h1{
+    color: white;
+    font-weight: bold;
+    font-size: 2.3em;
+    text-align: center;
+    margin: 0 2em 1.3em 2em;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+.login form .inp{
+    width: 400px;
+    height: 40px;
+    background: transparent;
+    outline: none;
+    color: white;
+    margin: 1em 0;
+    margin-bottom: 3em;
+    border-radius: 20px;
+    padding: 1em;
+    border: none;
+    box-shadow: -5px -5px 40px #8dd1f0,
+                5px 5px 40px #1f465a;
+}
+.login .inp::placeholder{
+    color: rgb(197, 197, 197);
+}
+.login .inp:active{
+    box-shadow: 5px 5px 40px #8dd1f0,
+                -5px -5px 40px #1f465a;
+}
+.login form #submit{
+    width: 200px;
+    height: 40px;
+    background: linear-gradient(45deg,#08CEC8,#008ECB);
+    border: none;
+    outline: none;
+    color: white;
+    font-weight: bold;
+    box-shadow: -5px -5px 40px #8dd1f0,
+                5px 5px 40px #1f465a;
+    border-radius: 30px;
+    margin: 2em 0;
+    font-size: 1.1em;
+    align-self: center;
+}
+.login form #submit:hover{
+    box-shadow: 5px 5px 20px #8dd1f0,
+                -5px -5px 20px #1f465a;
+}
+.login form a{
+    text-decoration: none;
+    margin: 0.3em 0;
+    color: rgb(221, 221, 221);
+    font-size: 0.8em;
+    transition:0.3s;
+}
+.login form a:hover{
+    transition: 0.3s;
+    color: #0091dc;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+@media(max-width:600px)
+{
+    .login-wrepper .login-box{
+        width: 320px;
+    }
+    .login form .inp{
+        width: 240px;
+    }
+    .login form #submit{
+        width: 130px;
+    }
+}
+
+
+/* sign up page */
+
+.signup-box{
+    height: 90%;
+}
+.login form #text{
+    padding: 0;
+    margin-bottom: 0.4em;
+}
+.login form .sinp{
+    width: 400px;
+    height: 35px;
+    background: transparent;
+    outline: none;
+    color: white;
+    margin: 1em 0;
+    border-radius: 20px;
+    padding: 1em;
+    border: none;
+    box-shadow: -5px -5px 20px #8dd1f0,
+                5px 5px 20px #1f465a;
+}
+.login form #submit1{
+    width: 200px;
+    height: 40px;
+    background: linear-gradient(45deg,#08CEC8,#008ECB);
+    border: none;
+    outline: none;
+    color: white;
+    font-weight: bold;
+    box-shadow: -5px -5px 40px #8dd1f0,
+                5px 5px 40px #1f465a;
+    border-radius: 30px;
+    margin: 2em 0;
+    font-size: 1.1em;
+    align-self: center;
+    padding: 0.3em 1em;
+}
+.login form #submit1:hover{
+    box-shadow: 5px 5px 20px #8dd1f0,
+                -5px -5px 20px #1f465a;
+}
+.login .sinp::placeholder{
+    color: rgb(197, 197, 197);
+}
+.login .sinp:active{
+    box-shadow: 5px 5px 40px #8dd1f0,
+                -5px -5px 40px #1f465a;
+}
+@media(max-width:600px)
+{
+    .login-wrepper .login-box{
+        width: 320px;
+    }
+    .login form .sinp{
+        width: 240px;
+    }
+    .login form #submit{
+        width: 130px;
+    }
+}
+
+/* profile page */
+
+.profile{
+    width: 90%;
+    height: 90%;
+    border-radius: 30px;
+    border: 2px solid rgba(61, 61, 61, 0.678);
+    margin: auto;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.205);
+}
+.profile .profile-pic{
+    padding: 1.3em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+.profile-pic img{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    border-radius: 50%;
+    border: 2px solid rgba(61, 61, 61, 0.678);
+}
+.profile-pic h1{
+    color: white;
+}
+.profile .profile-data-wrepper{
+    display: grid;
+    grid-template-columns: autofit(repeat(2,minmax(250px,1fr)));
+    grid-gap: 1em;
+}
+
+.profile-data-wrepper .profile-data{
+    border-radius: 30px;
+    border: 2px solid rgba(61, 61, 61, 0.678);
+    padding: 1em;
+    min-width: 250px;
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    font-size:1em;
+    color: white;
+    text-shadow: 2px 3px 5px rgba(0,0,0,0.3);
+    font-weight: 500;
+    line-height: 1.3em;
+}
+.profile-data-wrepper .loan-status{
+    border-radius: 30px;
+    border: 2px solid rgba(61, 61, 61, 0.678);
+    padding: 1em;
+    min-width: 250px;
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    font-size:1em;
+    color: white;
+    text-shadow: 2px 3px 5px rgba(0,0,0,0.3);
+    font-weight: 500;
+    line-height: 1.3em;
+}
+.loan-status p{
+    align-self: flex-start;
+    justify-self: center;
+}
+.profile-data-wrepper .loan-recomand{
+    border-radius: 30px;
+    border: 2px solid rgba(61, 61, 61, 0.678);
+    padding: 1em;
+    min-width: 300px;
+    min-height: 160px;
+    grid-column: 2/2;
+    grid-row: 1/2 span;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    font-size:1em;
+    color: white;
+    text-shadow: 2px 3px 5px rgba(0,0,0,0.3);
+    font-weight: 500;
+    line-height: 1.3em;
+}
+.loan-recomand p{
+    align-self: center;
+    justify-self: center;
+    margin: 2em 0;
+    color: rgba(180, 180, 180, 0.712);
+    font-size:2.4em;
+}
+
+@media(max-width:900px){
+    .profile .profile-pic{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .profile-data-wrepper{
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr;
+    }
+    .profile-data-wrepper .loan-recomand{
+        display: none;
+    }
+}
