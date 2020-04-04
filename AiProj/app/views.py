@@ -41,3 +41,7 @@ def updateProfile(request):
         return render(request,"app/profile.html",{"profile" : pro,"updated":True})
     else:
         return render(request,"app/update.html")
+
+
+def loans(request):
+    return render(request,'app/loans.html')
