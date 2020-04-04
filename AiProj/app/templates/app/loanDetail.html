@@ -6,14 +6,23 @@
 
 
 {% block main %}
+<div class="container py-2"
+    style="color: white; border:2px solid gray; border-radius:20px; background:rgba(255, 255, 255, 0.137);">
+    <h2 style="color: white;text-shadow: 2px 2px 5px rgba(0,0,0,0.3);" class="my-2 py-2">{{data.bank}}</h2>
+    <hr>
+    <p><span class="loanhigh">Amount:</span> Rs{{data.amount}}/-</p>
+    <p><span class="loanhigh">Interest Rate:</span> {{data.interest}}%</p>
+    {% if data.type == "PR" %}
+    <p><span class="loanhigh">Type of Loan:</span> Personal</p>
+    {% elif data.type == "BS" %}
+    <p><span class="loanhigh">Type of Loan:</span> Bussiness</p>
+    {% elif data.type == "HM" %}
+    <p><span class="loanhigh">Type of Loan:</span> Home</p>
+    {% endif %}
+    <hr>
+    <h4 class="pt-3"><span class="loanhigh">Content:</span></h4>
+    <p>{{data.content}}</p>
+    <a href="#" class="btn btn-primary px-4 my-2">Apply</a>
 
-{{data.bank}}
-<br>
-{{data.amount}}
-<br>
-{{data.content}}
-<br>
-{{data.type}}
-<br>
-{{data.interest}}
+</div>
 {% endblock main %}

@@ -40,6 +40,7 @@ def updateProfile(request):
         pro = profile(user=request.user, firstName=firstName,
                       lastName=lastName, image=image)
         pro.save()
+        messages.success(request, "Profile updated successfully...")
         return render(request, "app/profile.html", {"profile": pro, "updated": True})
     else:
         return render(request, "app/update.html")

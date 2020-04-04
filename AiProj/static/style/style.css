@@ -470,3 +470,8 @@ section .main-block{
         min-width: 240px;
     }
 }
+
+.loanhigh{
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}

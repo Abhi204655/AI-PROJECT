@@ -7,12 +7,12 @@ from django.contrib import messages
 
 # Create your views here.
 
+
 def registeration_view(request):
     context = {}
     user = request.user
     if user.is_authenticated:
         return redirect("home")
-
     if request.POST:
         form = RegistrationForm(request.POST)
         if form.is_valid():
@@ -21,8 +21,10 @@ def registeration_view(request):
             form.save()
             account = authenticate(email=email, password=raw_password)
             login(request, account)
+            messages.success(request, "Account created Successfully....")
             return redirect("/")
         else:
+            messages.warning(request, "Please fill the form correctly!!!")
             context['registeration_form'] = form
     else:
         form = RegistrationForm()
@@ -32,6 +34,7 @@ def registeration_view(request):
 
 def logout_view(request):
     logout(request)
+    messages.success(request, "You are successfully Logged out...")
     return redirect("/")
 
 
@@ -49,37 +52,13 @@ def login_view(request):
             user = authenticate(email=email, password=password)
             if user:
                 login(request, user)
+                messages.success(request, "Logged in Successfully...")
                 return redirect('/')
+            else:
+                messages.warning(request, "User Doesn't exist..")
+        else:
+            messages.warning(request, "Please fill the form correctly!!!")
     else:
         form = AccountAuthenticationForm()
-
     context['login_form'] = form
     return render(request, 'account/login.html')
-
-
-def update_view(request):
-
-    if not request.user.is_authenticated:
-        return redirect("login")
-
-    context = {}
-    if request.POST:
-        form = AccountUpdateForm(request.POST, instance=request.user)
-
-        if form.is_valid():
-            form.initial = {
-                "email": request.POST['email'], "username": request.POST['username']}
-            form.save()
-            context['success_message'] = "updated"
-
-    else:
-        form = AccountUpdateForm(
-            initial={
-                "email": request.user.email,
-                "username": request.user.username,
-            }
-        )
-
-    context['account_form'] = form
-
-    return render(request, "account/account.html", context)
