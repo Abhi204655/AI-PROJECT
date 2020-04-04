@@ -23,3 +23,8 @@ class Loans(models.Model):
 
     def __str__(self):
         return self.bank + ' - ' + str(self.amount)
+
+
+class VisitedLoan(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    visitedLoanId = models.IntegerField()
