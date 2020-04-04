@@ -57,7 +57,7 @@ nav .nav-bar{
 }
 @media(max-width:450px){
     .nav-bar .nav-items a{
-        margin-left: 1em;
+        margin-left: 0.4em;
     }
 }
 .nav-items #login{

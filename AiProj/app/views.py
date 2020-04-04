@@ -53,6 +53,16 @@ def loans(request):
     context = {
         'loans': data
     }
+    queryset = VisitedLoan.objects.filter(user=request.user)
+    data = []
+    for query in queryset:
+        try:
+            temp = Loans.objects.get(id=query.visitedLoanId)
+            data.append(temp)
+        except Loans.DoesNotExist:
+            continue
+
+    context['recommended'] = data
     return render(request, 'app/loans.html', context)
 
 
@@ -60,7 +70,8 @@ def loanDetail(request, pk):
     try:
         data = Loans.objects.get(id=pk)
         try:
-            ele = VisitedLoan.objects.get(visitedLoanId=data.id)
+            ele = VisitedLoan.objects.get(
+                user=request.user, visitedLoanId=data.id)
         except VisitedLoan.DoesNotExist:
             visit = VisitedLoan(user=request.user, visitedLoanId=data.id)
             visit.save()

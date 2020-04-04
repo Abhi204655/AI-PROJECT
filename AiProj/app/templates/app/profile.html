@@ -26,6 +26,7 @@
                 <h2>Loan Recommandations:-</h2>
                 <div class="container">
                     <div class="row">
+                        {% if loans %}
                         {% for loan in loans %}
                         <div class="col-md-4">
                             <div class="card mb-4 box-shadow">
@@ -49,6 +50,10 @@
                             </div>
                         </div>
                         {% endfor %}
+                        {% else %}
+                        <h1 style="color: white; font-size:1.3em; padding:1em;">We don't have any Recommandations for
+                            you...</h1>
+                        {% endif %}
                     </div>
                 </div>
                 <hr>
