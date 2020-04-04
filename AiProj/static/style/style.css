@@ -429,12 +429,6 @@ section .main-block{
     min-width: 350px;
 
 }
-.profile-data-wrepper .loan-recomand h2{
-    font-size:1.4em;
-    color: white;
-    padding: 1em;
-    text-decoration: underline;
-}
 .profile-data-wrepper .loan-status{
     padding: 1.3em;
     min-width: 350px;
@@ -447,6 +441,12 @@ section .main-block{
 .profile-data-wrepper .loan-status p{
     font-size:1em;
     padding: 0 1em;
+}
+#loanRecommand{
+    font-size:1.4em;
+    color: white;
+    padding: 1em;
+    text-decoration: underline;
 }
 #updatelink{
     color: white;

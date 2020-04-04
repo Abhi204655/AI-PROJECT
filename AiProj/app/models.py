@@ -29,12 +29,13 @@ class Loans(models.Model):
     content = models.TextField(null=True)
 
     def __str__(self):
-        return self.bank + ' - ' + str(self.amount)
+        return self.bank + ' - ' + str(self.amount) + ' - ' + self.type
 
 
 class VisitedLoan(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     visitedLoanId = models.IntegerField()
+    timevisited = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.user.username + ' - ' + str(self.visitedLoanId)

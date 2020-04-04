@@ -14,21 +14,18 @@ def home(request):
 def profilePage(request):
     try:
         pro = profile.objects.get(user=request.user)
-        queryset = VisitedLoan.objects.filter(user=request.user)
+        queryset = VisitedLoan.objects.filter(
+            user=request.user).order_by('-timevisited')
         data = []
-        count = 0
         for query in queryset:
-            if count == 3:
-                break
             try:
                 temp = Loans.objects.get(id=query.visitedLoanId)
-                count += 1
                 data.append(temp)
             except Loans.DoesNotExist:
                 continue
     except profile.DoesNotExist or VisitedLoan.DoesNotExist:
         return render(request, "app/profile.html", {"updated": False})
-    return render(request, "app/profile.html", {"profile": pro, "updated": True, "loans": data})
+    return render(request, "app/profile.html", {"profile": pro, "updated": True, "loans": data[:3]})
 
 
 @login_required(login_url="account/login")
@@ -49,11 +46,16 @@ def updateProfile(request):
 
 
 def loans(request):
-    data = Loans.objects.all()
+    home = Loans.objects.filter(type="HM")
+    bussiness = Loans.objects.filter(type="BS")
+    personal = Loans.objects.filter(type="PR")
     context = {
-        'loans': data
+        'homeloans': home,
+        'bussinessloans': bussiness,
+        'personalloans': personal
     }
-    queryset = VisitedLoan.objects.filter(user=request.user)
+    queryset = VisitedLoan.objects.filter(
+        user=request.user).order_by('-timevisited')
     data = []
     for query in queryset:
         try:
@@ -62,7 +64,7 @@ def loans(request):
         except Loans.DoesNotExist:
             continue
 
-    context['recommended'] = data
+    context['recommended'] = data[:3]
     return render(request, 'app/loans.html', context)
 
 
