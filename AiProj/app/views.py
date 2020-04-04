@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-from .models import profile
+from .models import profile, Loans, VisitedLoan
 from django.contrib import messages
 # Create your views here.
 
@@ -14,9 +14,21 @@ def home(request):
 def profilePage(request):
     try:
         pro = profile.objects.get(user=request.user)
-    except profile.DoesNotExist:
+        queryset = VisitedLoan.objects.filter(user=request.user)
+        data = []
+        count = 0
+        for query in queryset:
+            if count == 3:
+                break
+            try:
+                temp = Loans.objects.get(id=query.visitedLoanId)
+                count += 1
+                data.append(temp)
+            except Loans.DoesNotExist:
+                continue
+    except profile.DoesNotExist or VisitedLoan.DoesNotExist:
         return render(request, "app/profile.html", {"updated": False})
-    return render(request, "app/profile.html", {"profile": pro, "updated": True})
+    return render(request, "app/profile.html", {"profile": pro, "updated": True, "loans": data})
 
 
 @login_required(login_url="account/login")
@@ -37,4 +49,22 @@ def updateProfile(request):
 
 
 def loans(request):
-    return render(request, 'app/loans.html')
+    data = Loans.objects.all()
+    context = {
+        'loans': data
+    }
+    return render(request, 'app/loans.html', context)
+
+
+def loanDetail(request, pk):
+    try:
+        data = Loans.objects.get(id=pk)
+        try:
+            ele = VisitedLoan.objects.get(visitedLoanId=data.id)
+        except VisitedLoan.DoesNotExist:
+            visit = VisitedLoan(user=request.user, visitedLoanId=data.id)
+            visit.save()
+    except Loans.DoesNotExist:
+        return redirect("/")
+    context = {'data': data}
+    return render(request, "app/loanDetail.html", context)

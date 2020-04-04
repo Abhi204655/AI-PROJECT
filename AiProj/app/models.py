@@ -15,8 +15,15 @@ class profile(models.Model):
 
 
 class Loans(models.Model):
+
+    Loantypes = (
+        ("HM", "Home"),
+        ("PR", "Personal"),
+        ("BS", "Bussiness")
+    )
+
     bank = models.CharField(max_length=200)
-    type = models.CharField(max_length=100, null=True)
+    type = models.CharField(max_length=100, null=True, choices=Loantypes)
     amount = models.IntegerField()
     interest = models.IntegerField()
     content = models.TextField(null=True)
@@ -28,3 +35,6 @@ class Loans(models.Model):
 class VisitedLoan(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     visitedLoanId = models.IntegerField()
+
+    def __str__(self):
+        return self.user.username + ' - ' + str(self.visitedLoanId)
