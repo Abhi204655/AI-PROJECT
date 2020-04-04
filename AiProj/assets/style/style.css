@@ -55,6 +55,11 @@ nav .nav-bar{
     color: white;
     margin-left: 2em;
 }
+@media(max-width:450px){
+    .nav-bar .nav-items a{
+        margin-left: 1em;
+    }
+}
 .nav-items #login{
     position: relative;
 }
@@ -370,115 +375,98 @@ section .main-block{
 }
 
 /* profile page */
-
+#profile-sec{
+    width:100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .profile{
-    width: 90%;
-    height: 90%;
+    display: flex;
+    width: 85%;
+    height: auto;
+    border: 2px solid gray;
+    flex-direction: column;
     border-radius: 30px;
-    border: 2px solid rgba(61, 61, 61, 0.678);
-    margin: auto;
+    background-color: rgba(128, 128, 128, 0.374);
+    margin-bottom: 2em;
+}
+.profile .profile-pic{
+    width: 100%;
+    height: auto;
     padding: 2em;
     display: flex;
     flex-direction: column;
-    background: rgba(255, 255, 255, 0.205);
-}
-.profile .profile-pic{
-    padding: 1.3em;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
-}
-.profile-pic img{
-    width: 100px;
-    height: 100px;
-    background-color: red;
-    border-radius: 50%;
-    border: 2px solid rgba(61, 61, 61, 0.678);
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
 }
 .profile-pic h1{
+    font-size:1.4em;
     color: white;
+    text-transform: capitalize;
+    align-self: center;
+}
+.profile-pic img{
+    width: 160px;
+    height: 160px;
+    margin:1.3em;
+    margin-bottom:0.3em;
+    border-radius: 50%;
+    border: 2px solid gray;
 }
 .profile .profile-data-wrepper{
-    display: grid;
-    grid-template-columns: autofit(repeat(2,minmax(250px,1fr)));
-    grid-gap: 1em;
-}
-
-.profile-data-wrepper .profile-data{
-    border-radius: 30px;
-    border: 2px solid rgba(61, 61, 61, 0.678);
-    padding: 1em;
-    min-width: 250px;
-    min-height: 160px;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    font-size:1em;
-    color: white;
-    text-shadow: 2px 3px 5px rgba(0,0,0,0.3);
-    font-weight: 500;
-    line-height: 1.3em;
-}
-.profile-data-wrepper .loan-status{
-    border-radius: 30px;
-    border: 2px solid rgba(61, 61, 61, 0.678);
-    padding: 1em;
-    min-width: 250px;
-    min-height: 160px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    font-size:1em;
-    color: white;
-    text-shadow: 2px 3px 5px rgba(0,0,0,0.3);
-    font-weight: 500;
-    line-height: 1.3em;
-}
-.loan-status p{
-    align-self: flex-start;
-    justify-self: center;
+    align-items: center;
+    justify-content: space-around;
+    padding: 2em;
+    flex-wrap: wrap;
 }
 .profile-data-wrepper .loan-recomand{
-    border-radius: 30px;
-    border: 2px solid rgba(61, 61, 61, 0.678);
-    padding: 1em;
-    min-width: 300px;
-    min-height: 160px;
-    grid-column: 2/2;
-    grid-row: 1/2 span;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    font-size:1em;
-    color: white;
-    text-shadow: 2px 3px 5px rgba(0,0,0,0.3);
-    font-weight: 500;
-    line-height: 1.3em;
-}
-.loan-recomand p{
-    align-self: center;
-    justify-self: center;
-    margin: 2em 0;
-    color: rgba(180, 180, 180, 0.712);
-    font-size:2.4em;
-}
+    background-color:rgba(128, 128, 128, 0.459);
+    min-width: 350px;
 
-@media(max-width:900px){
-    .profile .profile-pic{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .profile-data-wrepper{
-        display: grid;
-        grid-template-rows: 1fr 1fr;
-        grid-template-columns: 1fr;
-    }
+}
+.profile-data-wrepper .loan-recomand h2{
+    font-size:1.4em;
+    color: white;
+    padding: 1em;
+    text-decoration: underline;
+}
+.profile-data-wrepper .loan-status{
+    padding: 1.3em;
+    min-width: 350px;
+}
+.profile-data-wrepper .loan-status h2{
+    font-size:1.4em;
+    color: white;
+    text-decoration: underline;
+}
+.profile-data-wrepper .loan-status p{
+    font-size:1em;
+    padding: 0 1em;
+}
+#updatelink{
+    color: white;
+    padding: 1em;
+    text-align: center;
+    background-color: #0d3d55;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    text-decoration: none;
+    transition: 0.4s;
+    text-transform: capitalize;
+}
+#updatelink:hover{
+    background-color: #0d3d5586;
+}
+@media(max-width:545px){
     .profile-data-wrepper .loan-recomand{
-        display: none;
+        min-width: 240px;
+    }
+    .profile-data-wrepper .loan-status{
+        min-width: 240px;
     }
 }

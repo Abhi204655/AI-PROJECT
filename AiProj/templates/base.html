@@ -22,6 +22,7 @@
             <div class="nav-items">
                 {% if user.is_authenticated %}
                     <a href="{% url 'app:profile' %}">Hi, {{user.username}}</a>
+                    <a href="#">Loans</a>
                     <a href="{% url 'account:logout' %}">Logout</a>
                 {% else %}
                 <a href="{% url 'account:login' %}" id="login">Login</a>
