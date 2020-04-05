@@ -25,7 +25,7 @@ def profilePage(request):
                 continue
     except profile.DoesNotExist or VisitedLoan.DoesNotExist:
         return render(request, "app/profile.html", {"updated": False})
-    return render(request, "app/profile.html", {"profile": pro, "updated": True, "loans": data[:3]})
+    return render(request, "app/profile.html", {"profile": pro, "updated": True, "loans": data})
 
 
 @login_required(login_url="account/login")
@@ -75,9 +75,11 @@ def loanDetail(request, pk):
         try:
             ele = VisitedLoan.objects.get(
                 user=request.user, visitedLoanId=data.id)
+            ele.delete()
         except VisitedLoan.DoesNotExist:
-            visit = VisitedLoan(user=request.user, visitedLoanId=data.id)
-            visit.save()
+            pass
+        visit = VisitedLoan(user=request.user, visitedLoanId=data.id)
+        visit.save()
     except Loans.DoesNotExist:
         return redirect("/")
     context = {'data': data}
